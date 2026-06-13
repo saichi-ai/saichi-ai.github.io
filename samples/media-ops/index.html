@@ -108,43 +108,31 @@
   </div>
 </section>
 
-<!-- STEP3 分析レポート -->
+<!-- STEP3 管理シート -->
 <section class="case-sec alt">
   <div class="wrap">
     <div class="bar"></div>
-    <h2>STEP 3 ｜ 公開後の分析レポート（成果物）</h2>
-    <p class="lead">公開して終わりにせず、数字で振り返って“次に試す1つ”を決めます。※数値はすべて架空のサンプルです。</p>
-    <div class="report">
-      <div class="metric">
-        <div class="top"><span class="name">クリック率（CTR）</span><span class="v">8.4%</span></div>
-        <div class="track"><div class="fill" style="width:70%"></div></div>
-        <div class="hint">目安の6%を上回る。A案（断定型）が最も高かった。</div>
-      </div>
-      <div class="metric">
-        <div class="top"><span class="name">平均視聴維持率</span><span class="v">47%</span></div>
-        <div class="track"><div class="fill" style="width:47%"></div></div>
-        <div class="hint">目安の45%をクリア。最後のbefore/afterまとめまで残りやすい。</div>
-      </div>
-      <div class="metric">
-        <div class="top"><span class="name">冒頭30秒の維持率</span><span class="v">82%</span></div>
-        <div class="track"><div class="fill" style="width:82%"></div></div>
-        <div class="hint">before/afterの先出しフックが機能している。</div>
-      </div>
-      <div class="metric">
-        <div class="top"><span class="name">平均視聴時間</span><span class="v">4分12秒 / 9分</span></div>
-        <div class="track"><div class="fill" style="width:47%"></div></div>
-        <div class="hint">中盤（2:30付近）に離脱の山が見られた。</div>
-      </div>
-
-      <div class="next">
-        <h4>次に試す改善（次アクション）</h4>
-        <ul>
-          <li>離脱の山がある2:30の直前に「次の見どころ」を一言予告して、中だるみを防ぐ</li>
-          <li>CTRが高かった A案（断定型）の方向で、数字「3」を足したパターンを次回サムネでA/B</li>
-          <li>反応が良かった before/after 要素を、次回以降のサムネ・冒頭にも標準採用する</li>
-        </ul>
-      </div>
+    <h2>STEP 3 ｜ 公開後の管理シート（数値を入れると自動で判定）</h2>
+    <p class="lead">公開後は数字で振り返ります。表示回数・クリック数・平均視聴維持率を入れると、<strong>CTR</strong>と「次にどう動くか」の<strong>判定</strong>が自動で出ます。複数の動画を並べて比較する、運用スプレッドシートのイメージです。※数値はすべて架空のサンプル。</p>
+    <div class="xsheet">
+      <table id="yt-table">
+        <thead>
+          <tr>
+            <th>動画タイトル</th>
+            <th>表示回数</th>
+            <th>クリック数</th>
+            <th>平均視聴維持率(%)</th>
+            <th>CTR<span class="auto-tag">自動</span></th>
+            <th>判定<span class="auto-tag">自動</span></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="yt-body"></tbody>
+      </table>
     </div>
+    <button type="button" class="addrow" id="yt-add">＋ 動画を追加</button>
+    <p class="legend">セルの色：<span class="sw in"></span>入力する欄　<span class="sw au"></span>自動で算出される欄　／　判定基準：CTR 6%以上＝高、維持率 45%以上＝高</p>
+    <div class="sheet-summary" id="yt-summary">—</div>
   </div>
 </section>
 
@@ -169,6 +157,63 @@
 <div class="disclaimer">
   <div class="wrap">※ 本ページのチャンネル・動画・数値はすべて架空のサンプルです。クライアント案件の固有情報・実チャンネル名・実数値は一切含みません。</div>
 </div>
+
+<script>
+(function(){
+  const body = document.getElementById('yt-body');
+  const CTR_HI = 6, RET_HI = 45;
+  const seed = [
+    ['スマホ写真が“プロっぽく”なる3つのコツ', 52000, 4360, 47],
+    ['初心者がやりがちなNG構図 5選',           38000, 1520, 52],
+    ['夜景がうまく撮れない人へ',                41000, 3690, 33],
+    ['結局どれ？写真アプリ比較',                22000,  880, 28],
+  ];
+  function verdict(ctr, ret){
+    const ch = ctr >= CTR_HI, rh = ret >= RET_HI;
+    if (ch && rh)  return ['good', '◎ 伸ばす（露出を増やす）'];
+    if (ch && !rh) return ['warn', '△ サムネ○・中身を見直す'];
+    if (!ch && rh) return ['warn', '△ 中身○・サムネ/タイトル改善'];
+    return ['bad', '✕ 企画から再検討'];
+  }
+  function rowHTML(t, imp, clk, ret){
+    return '<tr>'+
+      '<td><input class="name title" type="text" value="'+t.replace(/"/g,'&quot;')+'" placeholder="動画タイトル"></td>'+
+      '<td class="num"><input class="imp" type="number" min="0" value="'+imp+'"></td>'+
+      '<td class="num"><input class="clk" type="number" min="0" value="'+clk+'"></td>'+
+      '<td class="num"><input class="ret" type="number" min="0" max="100" value="'+ret+'"></td>'+
+      '<td class="auto cell-ctr">—</td>'+
+      '<td class="cell-verdict">—</td>'+
+      '<td><button type="button" class="del" title="削除">×</button></td>'+
+    '</tr>';
+  }
+  seed.forEach(s => body.insertAdjacentHTML('beforeend', rowHTML(s[0], s[1], s[2], s[3])));
+
+  function recalc(){
+    let best = null;
+    body.querySelectorAll('tr').forEach(tr => {
+      const imp = +tr.querySelector('.imp').value||0;
+      const clk = +tr.querySelector('.clk').value||0;
+      const ret = +tr.querySelector('.ret').value||0;
+      const ctr = imp > 0 ? clk / imp * 100 : 0;
+      tr.querySelector('.cell-ctr').textContent = imp > 0 ? ctr.toFixed(1) + '%' : '—';
+      const [cls, label] = verdict(ctr, ret);
+      tr.querySelector('.cell-verdict').innerHTML = '<span class="verdict '+cls+'">'+label+'</span>';
+      const score = ctr * ret;
+      if (imp > 0 && (!best || score > best.score)) best = { score, title: tr.querySelector('.title').value, ctr, ret };
+    });
+    const sum = document.getElementById('yt-summary');
+    if (best) {
+      sum.innerHTML = 'いま最も伸ばすべきは <b>「' + (best.title || '(無題)') + '」</b>（CTR ' + best.ctr.toFixed(1) + '％・維持率 ' + Math.round(best.ret) + '％）。露出を増やしつつ、他の動画は判定に沿って改善します。';
+    } else {
+      sum.textContent = '数値を入力すると、いちばん伸ばすべき動画を自動でピックします。';
+    }
+  }
+  document.getElementById('yt-table').addEventListener('input', recalc);
+  document.getElementById('yt-add').addEventListener('click', () => { body.insertAdjacentHTML('beforeend', rowHTML('', 0, 0, 0)); recalc(); });
+  body.addEventListener('click', e => { if (e.target.classList.contains('del')){ e.target.closest('tr').remove(); recalc(); } });
+  recalc();
+})();
+</script>
 
 </body>
 </html>

@@ -86,44 +86,60 @@
   </div>
 </section>
 
-<!-- ROIチェッカー -->
+<!-- ROI棚卸しシート -->
 <section class="case-sec alt">
   <div class="wrap">
     <div class="bar"></div>
-    <h2>ROIチェッカー：あなたの業務だと、どれくらい？</h2>
-    <p class="lead">業務タイプを選ぶか数値を入れると、削減効果に加えて<strong>投資回収期間</strong>と<strong>ROI</strong>までその場で試算します。導入を検討するときの“目安の物差し”としてお使いください。</p>
+    <h2>ROI棚卸しシート：候補業務を並べて、効果を試算</h2>
+    <p class="lead">自動化したい業務を行で書き出し、「現状の時間」と「自動化後に残る時間」を入れるだけ。<strong>削減率・削減額・全体ROI・投資回収期間</strong>まで自動で集計します。スプレッドシートで棚卸しする感覚で使えます。</p>
     <div class="roi">
-      <div class="preset" id="preset">
-        <button type="button" data-rate="65" data-hours="24">リサーチ</button>
-        <button type="button" data-rate="70" data-hours="20">データ集計</button>
-        <button type="button" data-rate="55" data-hours="28">資料作成</button>
-        <button type="button" data-rate="60" data-hours="32">問い合わせ対応</button>
-        <button type="button" data-custom class="active">カスタム</button>
-      </div>
-      <div class="roi-grid">
-        <div class="roi-field"><label>月間の作業時間 <span class="unit">（時間）</span></label><input type="number" id="hours" value="40" min="1" max="400"></div>
-        <div class="roi-field"><label>時間あたり人件費 <span class="unit">（円）</span></label><input type="number" id="wage" value="2000" min="500" max="20000" step="100"></div>
-        <div class="roi-field"><label>自動化による削減率 <span class="unit">（％）</span></label><input type="number" id="rate" value="50" min="5" max="95" step="5"></div>
-        <div class="roi-field"><label>初期導入コスト <span class="unit">（円）</span></label><input type="number" id="init" value="200000" min="0" step="10000"></div>
-        <div class="roi-field"><label>月額運用コスト <span class="unit">（円）</span></label><input type="number" id="run" value="0" min="0" step="1000"></div>
+      <div class="sheet-tools">
+        <div class="roi-field"><label>時間あたり人件費 <span class="unit">（円）</span></label><input type="number" id="wage" value="2000" min="0" step="100"></div>
+        <div class="roi-field"><label>初期導入コスト・合計 <span class="unit">（円）</span></label><input type="number" id="init" value="200000" min="0" step="10000"></div>
+        <div class="roi-field"><label>月額運用コスト・合計 <span class="unit">（円）</span></label><input type="number" id="run" value="0" min="0" step="1000"></div>
       </div>
 
-      <div class="roi-bars">
-        <div class="bar-row"><span class="lab">導入前</span><div class="track"><div class="fill before" id="bar-before" style="width:100%">40時間</div></div></div>
-        <div class="bar-row"><span class="lab">導入後</span><div class="track"><div class="fill after" id="bar-after" style="width:50%">20時間</div></div></div>
+      <div class="xsheet">
+        <table id="roi-table">
+          <thead>
+            <tr>
+              <th>業務名</th>
+              <th>現状の月間作業時間(h)</th>
+              <th>自動化後に残る時間(h)</th>
+              <th>削減時間<span class="auto-tag">自動</span></th>
+              <th>削減率<span class="auto-tag">自動</span></th>
+              <th>月間削減額<span class="auto-tag">自動</span></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="roi-body"></tbody>
+          <tfoot>
+            <tr class="total">
+              <td>合計</td>
+              <td id="t-before">—</td>
+              <td id="t-after">—</td>
+              <td id="t-saved">—</td>
+              <td id="t-rate">—</td>
+              <td id="t-money">—</td>
+              <td></td>
+            </tr>
+          </tfoot>
+        </table>
       </div>
+      <button type="button" class="addrow" id="roi-add">＋ 業務を追加</button>
+      <p class="legend">セルの色：<span class="sw in"></span>入力する欄　<span class="sw au"></span>自動で算出される欄</p>
 
-      <div class="roi-out">
-        <div class="o"><div class="big" id="o-h">20時間</div><div class="k">月あたりの削減時間</div></div>
-        <div class="o"><div class="big" id="o-m">40,000円</div><div class="k">月あたりの純削減額</div></div>
-        <div class="o"><div class="big" id="o-y">480,000円</div><div class="k">年間の純削減額</div></div>
+      <div class="roi-out" style="margin-top:24px;">
+        <div class="o"><div class="big" id="o-h">—</div><div class="k">合計 月間削減時間</div></div>
+        <div class="o"><div class="big" id="o-m">—</div><div class="k">月間の純削減額</div></div>
+        <div class="o"><div class="big" id="o-y">—</div><div class="k">年間の純削減額</div></div>
       </div>
       <div class="roi-out" style="margin-top:16px;">
-        <div class="o hl"><div class="big" id="o-pb">5.0ヶ月</div><div class="k">投資回収期間</div></div>
-        <div class="o hl"><div class="big" id="o-roi">140%</div><div class="k">年間ROI</div></div>
-        <div class="o"><div class="big" id="o-save5">2,200,000円</div><div class="k">5年間の累計削減額（目安）</div></div>
+        <div class="o hl"><div class="big" id="o-pb">—</div><div class="k">投資回収期間</div></div>
+        <div class="o hl"><div class="big" id="o-roi">—</div><div class="k">年間ROI</div></div>
+        <div class="o"><div class="big" id="o-save5">—</div><div class="k">5年間の累計削減額（目安）</div></div>
       </div>
-      <p class="note">※ 概算シミュレーションです。実際の効果は業務内容により異なります。投資回収期間・ROIは「初期導入コスト」と「月額運用コスト」を加味した試算です。</p>
+      <p class="note">※ 概算シミュレーションです。削減率・削減時間は「現状の時間」と「自動化後に残る時間」から自動計算しています。実際の効果は業務内容により異なります。</p>
     </div>
   </div>
 </section>
@@ -156,54 +172,69 @@
 </div>
 
 <script>
+(function(){
   const f = n => Math.round(n).toLocaleString('ja-JP');
   const el = id => document.getElementById(id);
-  const hours=el('hours'), wage=el('wage'), rate=el('rate'), init=el('init'), run=el('run');
+  const wage=el('wage'), init=el('init'), run=el('run'), body=el('roi-body');
 
-  function calc(){
-    const h=+hours.value||0, w=+wage.value||0, r=+rate.value||0, ic=+init.value||0, rc=+run.value||0;
-    const savedH = h * r / 100;
-    const afterH = h - savedH;
-    const grossM = savedH * w;       // 月間の粗削減額
-    const netM   = grossM - rc;      // 月額運用コストを引いた純削減額
+  const seed = [
+    ['リサーチ', 24, 8],
+    ['データ集計', 20, 6],
+    ['資料作成', 28, 14],
+    ['問い合わせ対応', 32, 14],
+  ];
+  function rowHTML(name, before, after){
+    return '<tr>'+
+      '<td><input class="name" type="text" value="'+name.replace(/"/g,'&quot;')+'" placeholder="業務名"></td>'+
+      '<td class="num"><input class="before" type="number" min="0" step="1" value="'+before+'"></td>'+
+      '<td class="num"><input class="after" type="number" min="0" step="1" value="'+after+'"></td>'+
+      '<td class="auto cell-saved">—</td>'+
+      '<td class="auto cell-rate">—</td>'+
+      '<td class="auto cell-money">—</td>'+
+      '<td><button type="button" class="del" title="削除">×</button></td>'+
+    '</tr>';
+  }
+  seed.forEach(s => body.insertAdjacentHTML('beforeend', rowHTML(s[0], s[1], s[2])));
 
-    el('o-h').textContent = f(savedH) + '時間';
+  function recalc(){
+    const w = +wage.value||0;
+    let tB=0, tA=0, tSaved=0, tMoney=0;
+    body.querySelectorAll('tr').forEach(tr => {
+      const b = +tr.querySelector('.before').value||0;
+      const a = +tr.querySelector('.after').value||0;
+      const saved = Math.max(0, b - a);
+      const money = saved * w;
+      tr.querySelector('.cell-saved').textContent = f(saved) + 'h';
+      tr.querySelector('.cell-rate').textContent  = b > 0 ? Math.round(saved / b * 100) + '%' : '—';
+      tr.querySelector('.cell-money').textContent = f(money) + '円';
+      tB += b; tA += a; tSaved += saved; tMoney += money;
+    });
+    el('t-before').textContent = f(tB) + 'h';
+    el('t-after').textContent  = f(tA) + 'h';
+    el('t-saved').textContent  = f(tSaved) + 'h';
+    el('t-rate').textContent   = tB > 0 ? Math.round(tSaved / tB * 100) + '%' : '—';
+    el('t-money').textContent  = f(tMoney) + '円';
+
+    const ic = +init.value||0, rc = +run.value||0;
+    const netM = tMoney - rc;
+    el('o-h').textContent = f(tSaved) + '時間';
     el('o-m').textContent = f(netM) + '円';
     el('o-y').textContent = f(netM * 12) + '円';
-
-    // before/after 横棒（作業時間）
-    el('bar-before').textContent = f(h) + '時間';
-    el('bar-after').textContent  = f(afterH) + '時間';
-    el('bar-after').style.width  = (h > 0 ? Math.max(4, afterH / h * 100) : 0) + '%';
-
-    // 投資回収期間・ROI
-    if (netM > 0) {
+    if (netM > 0){
       el('o-pb').textContent  = ic <= 0 ? '即時' : (ic/netM < 1 ? '1ヶ月未満' : (ic/netM).toFixed(1) + 'ヶ月');
       el('o-roi').textContent = ic <= 0 ? '—' : Math.round((netM*12 - ic) / ic * 100) + '%';
     } else {
-      el('o-pb').textContent = '—';
-      el('o-roi').textContent = '—';
+      el('o-pb').textContent = '—'; el('o-roi').textContent = '—';
     }
-    el('o-save5').textContent = f(netM * 60 - ic) + '円';   // 5年累計（純）−初期費用
+    el('o-save5').textContent = f(netM * 60 - ic) + '円';
   }
 
-  // プリセット
-  const presetBtns = document.querySelectorAll('#preset button');
-  const customBtn = document.querySelector('#preset button[data-custom]');
-  presetBtns.forEach(b => b.addEventListener('click', () => {
-    presetBtns.forEach(x => x.classList.remove('active'));
-    b.classList.add('active');
-    if (b.dataset.rate)  rate.value  = b.dataset.rate;
-    if (b.dataset.hours) hours.value = b.dataset.hours;
-    calc();
-  }));
-  // 手入力したら「カスタム」に切替
-  [hours, wage, rate, init, run].forEach(e => e.addEventListener('input', () => {
-    presetBtns.forEach(x => x.classList.remove('active'));
-    customBtn.classList.add('active');
-    calc();
-  }));
-  calc();
+  el('roi-table').addEventListener('input', recalc);
+  [wage, init, run].forEach(e => e.addEventListener('input', recalc));
+  el('roi-add').addEventListener('click', () => { body.insertAdjacentHTML('beforeend', rowHTML('', 0, 0)); recalc(); });
+  body.addEventListener('click', e => { if (e.target.classList.contains('del')){ e.target.closest('tr').remove(); recalc(); } });
+  recalc();
+})();
 </script>
 
 </body>
