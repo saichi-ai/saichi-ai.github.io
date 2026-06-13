@@ -119,3 +119,79 @@ a{color:var(--accent-d); text-decoration:none;} a:hover{color:var(--accent);}
   box-shadow:0 2px 12px rgba(22,32,43,.1); transition:.16s;}
 .btn:hover{background:var(--ink); color:#fff; transform:translateY(-2px);}
 .disclaimer{padding:26px 0; border-top:1px solid var(--line); text-align:center; color:var(--gray); font-size:.78rem;}
+
+/* =======================================================
+   ROIチェッカー（成果物：効率化が数字で見えるツール）
+   ======================================================= */
+.roi{background:#fff; border:1px solid var(--line); border-top:3px solid var(--accent); border-radius:var(--radius); padding:28px;}
+.roi .preset{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:24px;}
+.roi .preset button{font-size:.82rem; font-weight:700; color:var(--accent-d); background:var(--accent-l);
+  border:1px solid #d7eaec; padding:8px 14px; border-radius:999px; cursor:pointer; transition:.15s;}
+.roi .preset button:hover{border-color:var(--accent);}
+.roi .preset button.active{background:var(--accent); color:#fff; border-color:var(--accent-d);}
+.roi-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px 22px;}
+@media (max-width:640px){ .roi-grid{grid-template-columns:1fr;} }
+.roi-field label{display:block; font-size:.8rem; font-weight:700; margin-bottom:6px;}
+.roi-field .unit{font-size:.72rem; color:var(--gray); font-weight:400;}
+.roi-field input[type=number]{width:100%; padding:10px 12px; border:1px solid var(--line-2); border-radius:6px;
+  font-size:1rem; font-family:inherit; color:var(--ink); background:#fff;}
+.roi-field input[type=number]:focus{outline:none; border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-l);}
+.roi-field select{width:100%; padding:10px 12px; border:1px solid var(--line-2); border-radius:6px; font-size:1rem;
+  font-family:inherit; color:var(--ink); background:#fff;}
+
+/* before/after 横棒グラフ */
+.roi-bars{margin-top:28px; padding-top:24px; border-top:1px solid var(--line);}
+.roi-bars .bar-row{display:flex; align-items:center; gap:14px; margin:12px 0;}
+.roi-bars .bar-row .lab{flex:0 0 96px; font-size:.82rem; font-weight:700; color:var(--gray);}
+.roi-bars .track{flex:1; background:var(--bg-soft); border-radius:6px; overflow:hidden; height:34px; display:flex; align-items:center;}
+.roi-bars .fill{height:100%; display:flex; align-items:center; justify-content:flex-end; padding:0 12px;
+  color:#fff; font-weight:700; font-size:.86rem; white-space:nowrap; border-radius:6px; transition:width .35s ease;}
+.roi-bars .fill.before{background:#9aa4ad;}
+.roi-bars .fill.after{background:var(--accent);}
+
+/* 主要アウトプット（回収期間・ROI を強調） */
+.roi-out{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:24px;}
+@media (max-width:640px){ .roi-out{grid-template-columns:1fr;} }
+.roi-out .o{background:var(--accent-l); border-radius:var(--radius); padding:18px 16px; text-align:center;}
+.roi-out .o.hl{background:var(--accent); }
+.roi-out .o .big{font-size:1.7rem; font-weight:700; color:var(--accent-d); letter-spacing:-.02em;}
+.roi-out .o.hl .big, .roi-out .o.hl .k{color:#fff;}
+.roi-out .o .k{font-size:.78rem; color:var(--gray); margin-top:2px;}
+.roi .note{font-size:.74rem; color:#a7b0b8; margin:16px 0 0;}
+
+/* =======================================================
+   サムネ案モック（成果物：目で見えるアウトプット）
+   ======================================================= */
+.thumb-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+@media (max-width:760px){ .thumb-grid{grid-template-columns:1fr;} }
+.thumb-item .type{font-size:.74rem; font-weight:700; color:var(--accent-d); margin-bottom:8px;}
+.thumb-mock{position:relative; aspect-ratio:16/9; border-radius:8px; overflow:hidden;
+  display:flex; flex-direction:column; justify-content:center; padding:18px 18px; color:#fff;
+  box-shadow:0 8px 20px rgba(22,32,43,.16);}
+.thumb-mock .tt{font-weight:700; line-height:1.22; letter-spacing:-.01em; text-shadow:0 2px 8px rgba(0,0,0,.35);}
+.thumb-mock .big{font-size:clamp(1.2rem,3.4vw,1.7rem);}
+.thumb-mock .accent{color:#ffe14d;}
+.thumb-mock .num{font-size:2.6rem; font-weight:800; line-height:1; text-shadow:0 2px 10px rgba(0,0,0,.4);}
+.thumb-mock .badge{position:absolute; top:12px; left:12px; font-size:.66rem; font-weight:700; background:rgba(0,0,0,.45);
+  padding:3px 9px; border-radius:999px; letter-spacing:.04em;}
+.thumb-mock.v1{background:linear-gradient(135deg,#0f5f6b,#1a818f);}
+.thumb-mock.v2{background:linear-gradient(135deg,#14303a,#256370);}
+.thumb-mock.v3{background:linear-gradient(135deg,#1a818f,#46b3bf);}
+.thumb-mock .ba{display:flex; gap:8px; align-items:center; font-size:.95rem; font-weight:700;}
+.thumb-mock .ba .chip{background:rgba(255,255,255,.18); padding:3px 10px; border-radius:6px;}
+.thumb-item .why{font-size:.82rem; color:var(--gray); margin:10px 0 0; line-height:1.7;}
+
+/* =======================================================
+   分析レポート（成果物：測れる）
+   ======================================================= */
+.report{background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:26px;}
+.report .metric{margin:16px 0;}
+.report .metric .top{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:6px;}
+.report .metric .name{font-size:.88rem; font-weight:700;}
+.report .metric .v{font-size:.95rem; font-weight:700; color:var(--accent-d);}
+.report .metric .track{background:var(--bg-soft); border-radius:6px; height:12px; overflow:hidden;}
+.report .metric .fill{height:100%; background:var(--accent); border-radius:6px;}
+.report .metric .hint{font-size:.74rem; color:var(--gray); margin-top:4px;}
+.next{margin-top:24px; padding:20px 22px; background:var(--accent-l); border-radius:var(--radius); border-left:3px solid var(--accent);}
+.next h4{margin:0 0 8px; font-size:.92rem; color:var(--accent-d);}
+.next ul{margin:0; padding-left:1.2em;} .next li{font-size:.88rem; color:#33404c; margin:5px 0;}
