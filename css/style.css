@@ -121,7 +121,10 @@ section.alt { background: var(--bg-soft); }
 
 /* ---------- 制作サンプル（控えめな角丸カード） ---------- */
 .works { display:grid; grid-template-columns: repeat(2,1fr); gap:28px; }
-@media (max-width: 640px){ .works { grid-template-columns:1fr; } }
+.works.cols-3 { grid-template-columns: repeat(3,1fr); gap:24px; }
+@media (max-width: 880px){ .works.cols-3 { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 640px){ .works, .works.cols-3 { grid-template-columns:1fr; } }
+.works.cols-3 .work-thumb { height:150px; }
 .work-card {
   display:block; background:#fff; border:1px solid var(--line); border-radius:var(--radius);
   overflow:hidden; transition:.2s; color:inherit;

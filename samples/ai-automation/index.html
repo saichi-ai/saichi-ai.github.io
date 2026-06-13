@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>リサーチ業務の自動化｜AI業務効率化ケーススタディ - 佐野佑一郎</title>
+<meta name="description" content="週6時間のリサーチ業務をn8nとAIで30分に短縮した、自分自身の業務改善ケーススタディ。before/after・ワークフロー図・削減シミュレーター付き。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/case.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../../index.html">佐野佑一郎<small>AI仕組み化パートナー</small></a>
+    <a class="back" href="../../index.html#works">← ポートフォリオに戻る</a>
+  </div>
+</header>
+
+<!-- ヒーロー -->
+<section class="case-hero">
+  <div class="wrap">
+    <span class="tag">AI業務効率化 / ケーススタディ</span>
+    <h1>リサーチ業務を、週6時間から30分へ。</h1>
+    <p class="summary">毎週発生していた定型リサーチを、n8n と AI で“回り続けるワークフロー”に組み替えた、自分自身の業務改善事例です。ツールを入れるだけでなく、実務の手順に落とし込むところまでを設計しました。</p>
+    <div class="meta">
+      <div><div class="k">領域</div><div class="v">業務自動化 / リサーチ</div></div>
+      <div><div class="k">使用ツール</div><div class="v">n8n × Claude</div></div>
+      <div><div class="k">効果</div><div class="v">月22時間の削減</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 課題 -->
+<section class="case-sec">
+  <div class="wrap">
+    <div class="bar"></div>
+    <h2>課題</h2>
+    <p>定例のリサーチ業務は、毎回ほぼ同じ手順の繰り返しでした。情報を集め、要点を読み取り、決まった形に整える——一つひとつは難しくないものの、合計すると<strong>週に約6時間</strong>。担当者の集中時間を確実に奪い、本来やるべき企画や判断の時間を圧迫していました。</p>
+    <ul>
+      <li>毎回ゼロから検索し、同じようなサイトを横断して確認していた</li>
+      <li>要約・整形が手作業で、抜け漏れと品質のばらつきが出ていた</li>
+      <li>「やれば終わる」作業のため後回しにされ、溜まりがちだった</li>
+    </ul>
+  </div>
+</section>
+
+<!-- アプローチ + フロー図 -->
+<section class="case-sec alt">
+  <div class="wrap">
+    <div class="bar"></div>
+    <h2>アプローチ</h2>
+    <p class="lead">「人がやる工程」と「自動化できる工程」を切り分け、定型部分を n8n のワークフローに載せ替えました。判断が要る最後の確認だけを人が担う設計です。</p>
+    <div class="flow">
+      <div class="flow-step"><div class="n">STEP 1</div><div class="t">トリガー</div><div class="d">定時 or ボタンひとつで起動</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="n">STEP 2</div><div class="t">情報収集</div><div class="d">対象ソースを自動で横断取得</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="n">STEP 3</div><div class="t">AI要約</div><div class="d">要点を抽出し整形（Claude）</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="n">STEP 4</div><div class="t">出力</div><div class="d">所定のシート/文書へ自動記録</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="n">STEP 5</div><div class="t">人が確認</div><div class="d">最終チェックだけ担当</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 結果 before/after -->
+<section class="case-sec">
+  <div class="wrap">
+    <div class="bar"></div>
+    <h2>結果</h2>
+    <p class="lead">所要時間は週6時間から30分へ。空いた時間を企画・判断にあてられるようになりました。</p>
+    <div class="ba-grid">
+      <div class="ba-card"><div class="lbl">Before</div><div class="big">週 6時間</div><div class="sub">手作業での収集・要約・整形</div></div>
+      <div class="ba-mid">→</div>
+      <div class="ba-card after"><div class="lbl">After</div><div class="big">週 30分</div><div class="sub">確認のみ／残りは自動</div></div>
+    </div>
+    <div class="stat-row">
+      <div class="stat"><div class="v">月 22時間</div><div class="k">削減できた作業時間</div></div>
+      <div class="stat"><div class="v">約 4.4万円<span style="font-size:.9rem;">/月</span></div><div class="k">時間あたり2,000円換算の人件費相当</div></div>
+      <div class="stat"><div class="v">約 52万円<span style="font-size:.9rem;">/年</span></div><div class="k">年間に換算した削減効果</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- シミュレーター -->
+<section class="case-sec alt">
+  <div class="wrap">
+    <div class="bar"></div>
+    <h2>あなたの業務だと、どれくらい？</h2>
+    <p class="lead">数値を動かすと、想定される削減効果がその場で計算されます。「自分の業務に当てはめるといくら？」をイメージするための簡易ツールです。</p>
+    <div class="sim">
+      <div class="sim-grid">
+        <div>
+          <label>月間の作業時間 <span class="unit">（時間）</span></label>
+          <input type="range" id="hours" min="1" max="80" value="40" step="1">
+          <div class="val"><span id="hours-v">40</span> 時間</div>
+        </div>
+        <div>
+          <label>時間あたりの人件費 <span class="unit">（円）</span></label>
+          <input type="range" id="wage" min="1000" max="6000" value="2000" step="100">
+          <div class="val"><span id="wage-v">2,000</span> 円</div>
+        </div>
+        <div>
+          <label>自動化による削減率 <span class="unit">（％）</span></label>
+          <input type="range" id="rate" min="10" max="90" value="50" step="5">
+          <div class="val"><span id="rate-v">50</span> ％</div>
+        </div>
+      </div>
+      <div class="sim-out">
+        <div class="o"><div class="big" id="out-h">20 時間</div><div class="k">月あたりの削減時間</div></div>
+        <div class="o"><div class="big" id="out-m">40,000 円</div><div class="k">月あたりの削減額（目安）</div></div>
+        <div class="o"><div class="big" id="out-y">480,000 円</div><div class="k">年間の削減額（目安）</div></div>
+      </div>
+      <p class="note">※ あくまで概算シミュレーションです。実際の効果は業務内容により異なります。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 使用ツール -->
+<section class="case-sec">
+  <div class="wrap">
+    <div class="bar"></div>
+    <h2>使用ツール</h2>
+    <div class="chips">
+      <span class="chip">n8n（ワークフロー自動化）</span>
+      <span class="chip">Claude（要約・整形）</span>
+      <span class="chip">Google スプレッドシート</span>
+      <span class="chip">Claude Code（構築・調整）</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="case-foot">
+  <div class="wrap">
+    <h2>こうした「仕組み化」を、あなたの業務にも。</h2>
+    <p>「どこを自動化できる？」の見立てから一緒に進めます。</p>
+    <a class="btn" href="../../index.html#works">ほかのサンプルを見る</a>
+  </div>
+</section>
+
+<div class="disclaimer">
+  <div class="wrap">※ 本ページは自分自身の業務改善事例をもとにした紹介です。クライアント案件の固有情報・数値は含みません。</div>
+</div>
+
+<script>
+  const f = n => n.toLocaleString('ja-JP');
+  const hours = document.getElementById('hours');
+  const wage  = document.getElementById('wage');
+  const rate  = document.getElementById('rate');
+  function update(){
+    const h = +hours.value, w = +wage.value, r = +rate.value;
+    document.getElementById('hours-v').textContent = h;
+    document.getElementById('wage-v').textContent  = f(w);
+    document.getElementById('rate-v').textContent  = r;
+    const savedH = Math.round(h * r / 100);
+    const savedM = savedH * w;
+    document.getElementById('out-h').textContent = savedH + ' 時間';
+    document.getElementById('out-m').textContent = f(savedM) + ' 円';
+    document.getElementById('out-y').textContent = f(savedM * 12) + ' 円';
+  }
+  [hours, wage, rate].forEach(el => el.addEventListener('input', update));
+  update();
+</script>
+
+</body>
+</html>
