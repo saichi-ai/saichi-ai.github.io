@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お問い合わせ | 株式会社あおば工務店</title>
+  <meta name="description" content="あおば工務店へのお問い合わせ・無料相談のご予約はこちら。注文住宅・リフォーム・店舗改装について、お気軽にご連絡ください。">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Zen+Old+Mincho:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- ===================== HEADER ===================== -->
+<header id="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="site-logo">
+      <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path class="icon-stroke" d="M20 4L36 16V36H26V26H14V36H4V16L20 4Z" stroke="#2d5a3d" stroke-width="2" stroke-linejoin="round"/>
+        <path class="icon-stroke" d="M14 36V28C14 26.895 14.895 26 16 26H24C25.105 26 26 26.895 26 28V36" stroke="#2d5a3d" stroke-width="2" stroke-linejoin="round"/>
+        <path class="icon-stroke" d="M12 16H16V22H12V16Z" stroke="#a8784f" stroke-width="1.5" stroke-linejoin="round"/>
+        <path class="icon-stroke" d="M24 16H28V22H24V16Z" stroke="#a8784f" stroke-width="1.5" stroke-linejoin="round"/>
+      </svg>
+      <span class="logo-text">
+        <span class="name">あおば工務店</span>
+        <span class="sub">AOBA KOUMUTEN</span>
+      </span>
+    </a>
+
+    <nav class="global-nav" aria-label="グローバルナビゲーション">
+      <ul>
+        <li><a href="index.html">ホーム</a></li>
+        <li><a href="works.html">施工事例</a></li>
+        <li><a href="services.html">サービス・料金</a></li>
+        <li><a href="about.html">会社概要</a></li>
+        <li><a href="contact.html" aria-current="page">お問い合わせ</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-cta">
+      <span class="header-tel">042-000-0000</span>
+    </div>
+
+    <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<nav class="mobile-nav" aria-label="モバイルナビゲーション">
+  <ul>
+    <li><a href="index.html">ホーム</a></li>
+    <li><a href="works.html">施工事例</a></li>
+    <li><a href="services.html">サービス・料金</a></li>
+    <li><a href="about.html">会社概要</a></li>
+    <li><a href="contact.html" aria-current="page">お問い合わせ</a></li>
+  </ul>
+  <p class="mobile-nav-tel">☎ 042-000-0000</p>
+</nav>
+
+<main>
+
+<!-- ===================== PAGE HERO ===================== -->
+<div class="page-hero">
+  <div class="container">
+    <span class="label-en">CONTACT</span>
+    <h1>お問い合わせ</h1>
+    <p>現地調査・お見積もりは無料です。まずはお気軽にご連絡ください。</p>
+  </div>
+</div>
+
+<!-- ===================== TEL BAND ===================== -->
+<div class="tel-band">
+  <div class="container">
+    <h2>お電話でのお問い合わせ</h2>
+    <p class="tel-number">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M6 4C6 4 4 6 4 10C4 20 12 28 22 28C26 28 28 26 28 26L24 20L20 22C20 22 14 16 14 10L18 8L12 4L6 4Z" stroke="rgba(255,255,255,.9)" stroke-width="1.5" stroke-linejoin="round" fill="none"/>
+      </svg>
+      042-000-0000
+    </p>
+    <p class="tel-note">受付時間 9:00〜18:00（水曜定休）</p>
+  </div>
+</div>
+
+<!-- ===================== FORM ===================== -->
+<section>
+  <div class="container">
+    <div class="contact-layout">
+
+      <!-- フォーム本体 -->
+      <div class="contact-form-wrap reveal">
+        <h2>Webからのお問い合わせ</h2>
+        <p style="font-size:.875rem;color:var(--color-text-muted);margin-bottom:2rem;line-height:1.8;">
+          下記フォームに必要事項をご記入の上、送信ボタンをクリックしてください。<br>
+          通常2営業日以内にご返信いたします。<br>
+          <strong style="color:var(--color-green);">※ このサイトはサンプルのため、実際には送信されません。</strong>
+        </p>
+
+        <form id="contact-form" novalidate>
+
+          <!-- お名前 -->
+          <div class="form-group">
+            <label for="name">
+              お名前
+              <span class="required">必須</span>
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="例：山田 太郎"
+              autocomplete="name"
+            >
+            <p class="form-error-msg" role="alert"></p>
+          </div>
+
+          <!-- フリガナ -->
+          <div class="form-group">
+            <label for="furigana">
+              フリガナ
+              <span class="required">必須</span>
+            </label>
+            <input
+              type="text"
+              id="furigana"
+              name="furigana"
+              placeholder="例：ヤマダ タロウ"
+            >
+            <p class="form-error-msg" role="alert"></p>
+          </div>
+
+          <!-- 電話番号 -->
+          <div class="form-group">
+            <label for="phone">
+              電話番号
+              <span class="required">必須</span>
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="例：042-000-0000"
+              autocomplete="tel"
+            >
+            <p class="form-error-msg" role="alert"></p>
+          </div>
+
+          <!-- メールアドレス -->
+          <div class="form-group">
+            <label for="email">
+              メールアドレス
+              <span class="required">必須</span>
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="例：taro@example.com"
+              autocomplete="email"
+            >
+            <p class="form-error-msg" role="alert"></p>
+          </div>
+
+          <!-- ご相談内容（セレクト） -->
+          <div class="form-group">
+            <label for="inquiry-type">
+              ご相談の種類
+              <span class="required">必須</span>
+            </label>
+            <select id="inquiry-type" name="inquiry-type">
+              <option value="">選択してください</option>
+              <option value="jyutaku">注文住宅について</option>
+              <option value="reform">リフォーム・リノベーションについて</option>
+              <option value="tenpo">店舗改装について</option>
+              <option value="estimate">お見積もりのご依頼</option>
+              <option value="other">その他のご相談</option>
+            </select>
+            <p class="form-error-msg" role="alert"></p>
+          </div>
+
+          <!-- お問い合わせ内容 -->
+          <div class="form-group">
+            <label for="message">
+              お問い合わせ内容
+              <span class="required">必須</span>
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="例：築25年の自宅のキッチンと浴室をリフォームしたいと考えています。予算は150万円程度を想定しています。まずは現地を見ていただいてお見積もりをお願いできますか？"
+            ></textarea>
+            <p class="form-error-msg" role="alert"></p>
+          </div>
+
+          <!-- プライバシーポリシー同意 -->
+          <div class="form-group">
+            <label class="form-check">
+              <input type="checkbox" id="privacy" name="privacy">
+              <span>
+                <a href="#privacy-policy">プライバシーポリシー</a>に同意する
+              </span>
+            </label>
+            <p class="form-error-msg" role="alert"></p>
+          </div>
+
+          <div class="form-submit">
+            <button type="submit" class="btn btn-primary" style="font-size:1rem;padding:1rem 3rem;">
+              送信する
+            </button>
+            <p class="form-note">※ サンプルサイトのため、実際には送信されません。</p>
+          </div>
+
+        </form>
+      </div>
+
+      <!-- サイドバー -->
+      <aside class="contact-side reveal">
+        <h3>お電話でのご相談</h3>
+        <p class="tel-big">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M4 3C4 3 3 4 3 6.5C3 13.5 8.5 19 15.5 19C18 19 19 18 19 18L16.5 14L14 15.5C14 15.5 10 11.5 10 8.5L12.5 6.5L9 3L4 3Z" stroke="#2d5a3d" stroke-width="1.5" stroke-linejoin="round" fill="none"/>
+          </svg>
+          042-000-0000
+        </p>
+        <p class="business-hours">受付時間 9:00〜18:00（水曜定休）</p>
+
+        <dl class="contact-info-list">
+          <div class="access-item">
+            <dt>住所</dt>
+            <dd>〒206-0000<br>東京都多摩市関戸1-2-3</dd>
+          </div>
+          <div class="access-item">
+            <dt>最寄り駅</dt>
+            <dd>京王・小田急「多摩センター駅」より<br>徒歩12分／バス5分（架空）</dd>
+          </div>
+          <div class="access-item">
+            <dt>駐車場</dt>
+            <dd>3台完備（無料）</dd>
+          </div>
+        </dl>
+
+        <div style="margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--color-border);">
+          <p style="font-size:.8rem;font-weight:700;color:var(--color-green);margin-bottom:.75rem;">こんなご相談もお気軽に</p>
+          <ul style="display:flex;flex-direction:column;gap:.5rem;">
+            <li style="font-size:.8rem;color:var(--color-text-muted);display:flex;gap:.5rem;align-items:baseline;">
+              <span style="color:var(--color-brown);flex-shrink:0;">▸</span>
+              まだ漠然としたイメージしかない
+            </li>
+            <li style="font-size:.8rem;color:var(--color-text-muted);display:flex;gap:.5rem;align-items:baseline;">
+              <span style="color:var(--color-brown);flex-shrink:0;">▸</span>
+              予算をどう組めばいいかわからない
+            </li>
+            <li style="font-size:.8rem;color:var(--color-text-muted);display:flex;gap:.5rem;align-items:baseline;">
+              <span style="color:var(--color-brown);flex-shrink:0;">▸</span>
+              他社の見積もりとの比較をしたい
+            </li>
+            <li style="font-size:.8rem;color:var(--color-text-muted);display:flex;gap:.5rem;align-items:baseline;">
+              <span style="color:var(--color-brown);flex-shrink:0;">▸</span>
+              ちょっとした修繕を頼みたい
+            </li>
+          </ul>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== プライバシーポリシー ===================== -->
+<section id="privacy-policy" class="section-bg-off">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label-en">PRIVACY</span>
+      <h2 class="section-title">プライバシーポリシー</h2>
+    </div>
+    <div class="reveal" style="max-width:800px;margin:0 auto;font-size:.875rem;line-height:2;color:var(--color-text-muted);">
+      <p>株式会社あおば工務店（以下「当社」）は、お客さまの個人情報の保護を重要な責務と認識し、以下の方針に従って取り扱います。</p>
+
+      <h3 style="font-size:1rem;color:var(--color-green);margin:1.5rem 0 .5rem;">1. 個人情報の収集</h3>
+      <p>当社は、お問い合わせ・資料請求・見積もり依頼の際に、お名前・電話番号・メールアドレス等の個人情報をご提供いただく場合があります。</p>
+
+      <h3 style="font-size:1rem;color:var(--color-green);margin:1.5rem 0 .5rem;">2. 利用目的</h3>
+      <p>収集した個人情報は、お問い合わせへの返答・現地調査・施工工事の実施・アフターサービスの提供を目的として利用します。ご本人の同意なく第三者に提供することはありません。</p>
+
+      <h3 style="font-size:1rem;color:var(--color-green);margin:1.5rem 0 .5rem;">3. 安全管理</h3>
+      <p>個人情報の漏えい・滅失・毀損を防止するため、適切な安全管理措置を講じます。</p>
+
+      <h3 style="font-size:1rem;color:var(--color-green);margin:1.5rem 0 .5rem;">4. お問い合わせ</h3>
+      <p>個人情報の開示・訂正・削除に関するご要望は、上記電話番号またはお問い合わせフォームよりご連絡ください。</p>
+
+      <p style="margin-top:1.5rem;font-size:.78rem;border-top:1px solid var(--color-border);padding-top:1rem;">
+        ※ このプライバシーポリシーは架空のサンプルサイト用のものです。実際のポリシーとは異なります。
+      </p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="site-logo" style="margin-bottom:.75rem;">
+          <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path class="icon-stroke" d="M20 4L36 16V36H26V26H14V36H4V16L20 4Z" stroke="rgba(255,255,255,0.8)" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+          <span class="logo-text">
+            <span class="name" style="color:rgba(255,255,255,.9)">あおば工務店</span>
+            <span class="sub" style="color:rgba(255,255,255,.5)">AOBA KOUMUTEN</span>
+          </span>
+        </a>
+        <p>東京都多摩市関戸1-2-3<br>TEL: 042-000-0000<br>営業時間 9:00〜18:00（水曜定休）</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="フッターナビゲーション">
+        <h4>MENU</h4>
+        <ul>
+          <li><a href="index.html">ホーム</a></li>
+          <li><a href="works.html">施工事例</a></li>
+          <li><a href="services.html">サービス・料金</a></li>
+          <li><a href="about.html">会社概要</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-nav" aria-label="サービスナビゲーション">
+        <h4>SERVICE</h4>
+        <ul>
+          <li><a href="services.html#jyutaku">注文住宅</a></li>
+          <li><a href="services.html#reform">リフォーム</a></li>
+          <li><a href="services.html#tenpo">店舗改装</a></li>
+          <li><a href="services.html#flow">施工の流れ</a></li>
+          <li><a href="services.html#faq">よくある質問</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-disclaimer">※ このサイトは架空の企業のサンプルサイトです。実在の企業・団体・人物とは一切関係ありません。</p>
+      <p class="footer-copy">&copy; 2025 株式会社あおば工務店（架空） All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

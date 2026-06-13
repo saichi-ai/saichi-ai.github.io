@@ -1,0 +1,166 @@
+/* =========================================================
+   佐野佑一郎 / AI仕組み化パートナー — ポートフォリオ v5
+   方針: Apple系の余白・大きな見出し・中央寄せ・白/グレーの交互リズム
+        色味は据え置き / 角丸は控えめ / ボタンは影+枠で視認
+   ========================================================= */
+:root {
+  --ink:        #16202b;
+  --gray:       #5a6671;
+  --line:       #e4e8ec;
+  --line-2:     #c9d2d9;
+  --bg:         #ffffff;
+  --bg-soft:    #f5f5f7;   /* Apple系のニュートラルグレー */
+  --accent:     #1a818f;
+  --accent-d:   #0f5f6b;
+  --accent-l:   #eef6f7;
+  --maxw:       1080px;
+  --radius:     6px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.85;
+  font-size: 16px;
+  letter-spacing: .01em;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--accent-d); text-decoration: none; }
+a:hover { color: var(--accent); }
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
+
+/* ---------- ヘッダー ---------- */
+.site-header {
+  position: sticky; top: 0; z-index: 30;
+  background: rgba(255,255,255,.82);
+  backdrop-filter: saturate(180%) blur(16px);
+  border-bottom: 1px solid var(--line);
+}
+.site-header .wrap { display:flex; align-items:center; justify-content:space-between; height:62px; }
+.brand { font-weight:700; font-size:1.02rem; letter-spacing:-.01em; }
+.brand small { display:block; font-weight:400; font-size:.71rem; color:var(--gray); letter-spacing:.02em; }
+.nav a { color:var(--ink); font-size:.86rem; font-weight:500; margin-left:28px; letter-spacing:.01em; }
+.nav a:hover { color:var(--accent); }
+.nav .nav-cta { color:var(--accent-d); font-weight:700; }
+@media (max-width: 720px){ .nav { display:none; } }
+
+/* ---------- ヒーロー（中央寄せ・大きく・余白広め） ---------- */
+.hero {
+  padding: 132px 0 120px; text-align:center;
+  position: relative; overflow: hidden;
+  background:
+    radial-gradient(60% 55% at 18% 12%, rgba(26,129,143,.12), transparent 60%),
+    radial-gradient(55% 50% at 88% 22%, rgba(69,179,191,.14), transparent 60%),
+    radial-gradient(70% 60% at 50% 120%, rgba(15,95,107,.08), transparent 60%),
+    linear-gradient(180deg, #eef7f8 0%, #f6fbfb 42%, #ffffff 100%);
+  border-bottom: 1px solid var(--line);
+}
+.hero > .wrap { position: relative; z-index: 1; }
+.hero h1 {
+  font-size: clamp(2.3rem, 6vw, 3.6rem); line-height:1.28; font-weight:700;
+  margin:0 0 22px; letter-spacing:-.025em;
+}
+.hero h1 .hl { color: var(--accent-d); }
+.hero .lead { font-size:1.16rem; color:var(--gray); max-width:640px; margin:0 auto 38px; line-height:1.8; }
+.hero .cta { display:flex; gap:16px; flex-wrap:wrap; align-items:center; justify-content:center; }
+.hero .trust { margin-top:30px; font-size:.86rem; color:var(--gray); }
+.hero .trust b { color:var(--ink); font-weight:700; }
+
+/* ---------- ボタン（影 + 枠 + コントラスト） ---------- */
+.btn {
+  display:inline-flex; align-items:center; gap:9px;
+  padding:14px 32px; border-radius:8px; font-weight:700; font-size:.96rem;
+  border:1.5px solid transparent; cursor:pointer; transition:.18s; letter-spacing:.01em;
+}
+.btn .ar { transition: transform .18s; }
+.btn:hover .ar { transform: translateX(3px); }
+.btn-primary {
+  background: var(--accent); color:#fff; border-color: var(--accent-d);
+  box-shadow: 0 6px 18px rgba(26,129,143,.30);
+}
+.btn-primary:hover { background: var(--accent-d); color:#fff; box-shadow: 0 10px 26px rgba(26,129,143,.38); transform: translateY(-2px); }
+.btn-secondary {
+  background:#fff; color: var(--ink); border-color: var(--ink);
+  box-shadow: 0 2px 12px rgba(22,32,43,.10);
+}
+.btn-secondary:hover { background: var(--ink); color:#fff; box-shadow: 0 8px 20px rgba(22,32,43,.22); transform: translateY(-2px); }
+
+/* ---------- セクション共通（中央寄せの導入見出し・余白広め） ---------- */
+section { padding: 108px 0; }
+section.alt { background: var(--bg-soft); }
+.sec-head { margin: 0 auto 56px; max-width:680px; text-align:center; }
+.sec-head .bar { width:40px; height:3px; background:var(--accent); margin:0 auto 20px; border-radius:2px; }
+.sec-head h2 { font-size: clamp(1.7rem, 3.2vw, 2.2rem); line-height:1.32; margin:0 0 14px; font-weight:700; letter-spacing:-.02em; }
+.sec-head p { color:var(--gray); margin:0; font-size:1.0rem; }
+
+/* ---------- 実績（罫線グリッド・数字主役・箱なし） ---------- */
+.metrics { display:grid; grid-template-columns: repeat(3,1fr); border-top:2px solid var(--ink); }
+@media (max-width: 760px){ .metrics { grid-template-columns:1fr; } }
+.metric { padding:32px 30px 34px 0; border-bottom:1px solid var(--line); }
+.metric + .metric { border-left:1px solid var(--line); padding-left:30px; }
+@media (max-width: 760px){ .metric{ padding:26px 0; } .metric + .metric{ padding-left:0; border-left:none; } }
+.metric .tool { font-size:.8rem; font-weight:700; color:var(--accent-d); letter-spacing:.01em; }
+.metric .ba { display:flex; align-items:baseline; gap:10px; margin:16px 0 6px; flex-wrap:wrap; }
+.metric .before { color:#9aa4ad; text-decoration:line-through; font-size:.92rem; }
+.metric .arrow { color:var(--accent); font-weight:700; }
+.metric .after { font-size:2.1rem; font-weight:700; color:var(--ink); letter-spacing:-.02em; }
+.metric .desc { font-size:.86rem; color:var(--gray); margin-top:6px; line-height:1.8; }
+.metric .note { font-size:.74rem; color:#a7b0b8; margin-top:12px; }
+
+/* ---------- できること（番号組版・罫線・箱なし） ---------- */
+.cases { display:grid; grid-template-columns: repeat(2,1fr); column-gap:56px; }
+@media (max-width: 640px){ .cases { grid-template-columns:1fr; column-gap:0; } }
+.case { display:flex; gap:22px; align-items:flex-start; padding:30px 0; border-top:1px solid var(--line-2); }
+.case .no { flex:0 0 auto; font-size:1.1rem; font-weight:700; color:var(--accent); letter-spacing:.02em; min-width:28px; padding-top:2px; }
+.case h3 { font-size:1.08rem; margin:0 0 6px; font-weight:700; letter-spacing:-.01em; }
+.case p { font-size:.9rem; color:var(--gray); margin:0; line-height:1.8; }
+
+/* ---------- 制作サンプル（控えめな角丸カード） ---------- */
+.works { display:grid; grid-template-columns: repeat(2,1fr); gap:28px; }
+@media (max-width: 640px){ .works { grid-template-columns:1fr; } }
+.work-card {
+  display:block; background:#fff; border:1px solid var(--line); border-radius:var(--radius);
+  overflow:hidden; transition:.2s; color:inherit;
+}
+.work-card:hover { border-color:var(--accent); transform:translateY(-4px); box-shadow:0 16px 36px rgba(22,32,43,.12); }
+.work-thumb {
+  height:200px; position:relative;
+  background:linear-gradient(120deg, var(--accent-d), #45b3bf);
+  display:flex; align-items:center; justify-content:center; color:#fff;
+}
+.work-thumb::after{ content:""; position:absolute; left:0; bottom:0; width:100%; height:3px; background:rgba(255,255,255,.5); }
+.work-thumb .label { font-size:1.3rem; font-weight:700; letter-spacing:.05em; }
+.work-body { padding:26px 28px; }
+.work-body .tag { font-size:.74rem; font-weight:700; color:var(--accent-d); letter-spacing:.02em; }
+.work-body h3 { font-size:1.1rem; margin:8px 0 7px; font-weight:700; letter-spacing:-.01em; }
+.work-body p { font-size:.88rem; color:var(--gray); margin:0 0 14px; line-height:1.8; }
+.work-body .more { font-size:.88rem; font-weight:700; color:var(--accent-d); display:inline-flex; gap:6px; align-items:center; }
+.work-card:hover .more .ar { transform:translateX(3px); }
+.work-card.placeholder { background:var(--bg); }
+.work-card.placeholder:hover { transform:none; box-shadow:none; border-color:var(--line); }
+.work-card.placeholder .work-thumb { background:#eef1f4; color:#aab3bb; }
+.work-card.placeholder .work-thumb::after{ background:#dfe4e8; }
+
+/* ---------- プロフィール ---------- */
+.profile { display:grid; grid-template-columns: 1.4fr 1fr; gap:56px; align-items:start; max-width:920px; margin:0 auto; }
+@media (max-width: 760px){ .profile { grid-template-columns:1fr; gap:34px; } }
+.profile p { margin:0 0 17px; color:#33404c; font-size:1.0rem; }
+.profile .facts { border:1px solid var(--line); border-top:2px solid var(--ink); border-radius:var(--radius); padding:6px 30px; background:#fff; }
+.profile .facts dl { margin:0; }
+.profile .facts dt { font-size:.74rem; font-weight:700; color:var(--accent-d); letter-spacing:.02em; padding-top:20px; }
+.profile .facts dd { margin:5px 0 20px; font-size:.93rem; color:var(--ink); border-bottom:1px solid var(--line); padding-bottom:20px; }
+.profile .facts .row:last-child dd { border-bottom:none; }
+
+/* ---------- 締めCTAバンド ---------- */
+.cta-band { background:var(--accent-l); text-align:center; padding:96px 0; border-top:1px solid #d8e9ea; }
+.cta-band h2 { font-size: clamp(1.6rem, 3vw, 2rem); margin:0 0 14px; font-weight:700; color:var(--ink); letter-spacing:-.02em; }
+.cta-band p { color:var(--gray); margin:0 0 34px; font-size:1.0rem; }
+.cta-band .links { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+
+/* ---------- フッター ---------- */
+.site-footer { border-top:1px solid var(--line); padding:36px 0; color:var(--gray); font-size:.8rem; text-align:center; }
+.site-footer a { color:var(--gray); margin:0 10px; }
