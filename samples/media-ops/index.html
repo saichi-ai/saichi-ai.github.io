@@ -294,6 +294,7 @@
 <script>
 (function(){
   const body = document.getElementById('q-body');
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const SUB_HI = 5;    // 登録者(万) これ以上で「大CH」
   const SPR_HI = 50;   // 拡散率(%) これ以上で「伸びている」
   const seed = [
@@ -311,7 +312,7 @@
   }
   function rowHTML(name, sub, view){
     return '<tr>'+
-      '<td><input class="name" type="text" value="'+name.replace(/"/g,'&quot;')+'" placeholder="チャンネル名"></td>'+
+      '<td><input class="name" type="text" value="'+esc(name)+'" placeholder="チャンネル名"></td>'+
       '<td class="num"><input class="sub" type="number" min="0" step="0.1" value="'+sub+'"></td>'+
       '<td class="num"><input class="view" type="number" min="0" step="0.1" value="'+view+'"></td>'+
       '<td class="auto cell-spr">—</td>'+
@@ -335,7 +336,7 @@
     });
     const sum = document.getElementById('q-summary');
     if (best) {
-      sum.innerHTML = '拡散率が最も高いのは <b>「' + (best.name || '(無名)') + '」</b>（' + Math.round(best.spr) + '％）。' +
+      sum.innerHTML = '拡散率が最も高いのは <b>「' + esc(best.name || '(無名)') + '」</b>（' + Math.round(best.spr) + '％）。' +
         (niche > 0 ? '「★穴場」候補が <b>' + niche + '件</b>。小規模×高拡散のチャンネルは、伸びるテーマの“当たり”を持っています。'
                    : '今のところ「★穴場」該当はなし。登録者の少ないチャンネルで拡散率の高い例を探すと、参入の糸口が見つかります。');
     } else {
