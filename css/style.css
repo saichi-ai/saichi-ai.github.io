@@ -52,19 +52,64 @@ a:hover { color: var(--accent); }
 .hero {
   padding: 132px 0 120px; text-align:center;
   position: relative; overflow: hidden;
-  background:
-    radial-gradient(60% 55% at 18% 12%, rgba(26,129,143,.12), transparent 60%),
-    radial-gradient(55% 50% at 88% 22%, rgba(69,179,191,.14), transparent 60%),
-    radial-gradient(70% 60% at 50% 120%, rgba(15,95,107,.08), transparent 60%),
-    linear-gradient(180deg, #eef7f8 0%, #f6fbfb 42%, #ffffff 100%);
+  background: linear-gradient(180deg, #eef7f8 0%, #f6fbfb 42%, #ffffff 100%);
   border-bottom: 1px solid var(--line);
 }
+/* 漂うオーロラ光（回遊するブロブ） */
+.hero-bg { position:absolute; inset:0; z-index:0; overflow:hidden; pointer-events:none; }
+.hero-bg .blob {
+  position:absolute; border-radius:50%; filter:blur(60px); opacity:.9;
+  will-change:transform; mix-blend-mode:multiply;
+}
+/* 位置と動きは JS が制御（完全ランダム回遊）。translate原点は左上。 */
+.hero-bg .blob { left:0; top:0; transform: translate(0,0); }
+.hero-bg .b1 {
+  width:60vw; max-width:780px; aspect-ratio:1;
+  background: radial-gradient(circle, rgba(26,129,143,.46), transparent 70%);
+}
+.hero-bg .b2 {
+  width:54vw; max-width:720px; aspect-ratio:1;
+  background: radial-gradient(circle, rgba(69,179,191,.44), transparent 70%);
+}
+.hero-bg .b3 {
+  width:52vw; max-width:660px; aspect-ratio:1;
+  background: radial-gradient(circle, rgba(15,95,107,.38), transparent 70%);
+}
+.hero-bg .b4 {
+  width:42vw; max-width:540px; aspect-ratio:1;
+  background: radial-gradient(circle, rgba(99,205,214,.44), transparent 70%);
+}
 .hero > .wrap { position: relative; z-index: 1; }
+
+/* 登場アニメ（下からふわっと・順番に） */
+@keyframes heroRise {
+  from { opacity:0; transform: translateY(20px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+.hero h1, .hero .lead, .hero .cta, .hero .trust {
+  opacity:0; animation: heroRise .8s cubic-bezier(.2,.7,.2,1) forwards;
+}
+.hero h1    { animation-delay:.10s; }
+.hero .lead { animation-delay:.28s; }
+.hero .cta  { animation-delay:.46s; }
+.hero .trust{ animation-delay:.62s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg .blob, .hero h1 .hl { animation:none; }
+  .hero h1, .hero .lead, .hero .cta, .hero .trust { opacity:1; animation:none; }
+}
 .hero h1 {
   font-size: clamp(2.3rem, 6vw, 3.6rem); line-height:1.28; font-weight:700;
   margin:0 0 22px; letter-spacing:-.025em;
 }
-.hero h1 .hl { color: var(--accent-d); }
+.hero h1 .hl {
+  background: linear-gradient(90deg, var(--accent-d) 0%, #46b3bf 50%, var(--accent-d) 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+  animation: hlSweep 6s linear infinite;
+}
+@keyframes hlSweep { to { background-position: 200% 0; } }
 .hero .lead { font-size:1.16rem; color:var(--gray); max-width:640px; margin:0 auto 38px; line-height:1.8; }
 .hero .cta { display:flex; gap:16px; flex-wrap:wrap; align-items:center; justify-content:center; }
 .hero .trust { margin-top:30px; font-size:.86rem; color:var(--gray); }
@@ -88,6 +133,22 @@ a:hover { color: var(--accent); }
   box-shadow: 0 2px 12px rgba(22,32,43,.10);
 }
 .btn-secondary:hover { background: var(--ink); color:#fff; box-shadow: 0 8px 20px rgba(22,32,43,.22); transform: translateY(-2px); }
+/* 定期的にキラッと光るボタン（サンプルを見る） */
+.hero .btn-secondary { position:relative; overflow:hidden; isolation:isolate; }
+.hero .btn-secondary::after {
+  content:""; position:absolute; top:0; bottom:0; left:-160%; width:55%;
+  background: linear-gradient(100deg, transparent 0%, rgba(70,179,191,.15) 35%, rgba(255,255,255,.95) 50%, rgba(70,179,191,.15) 65%, transparent 100%);
+  transform: skewX(-22deg); pointer-events:none; z-index:2;
+  animation: btnShine 5s ease-in-out infinite;
+}
+@keyframes btnShine {
+  0%   { left:-160%; }
+  12%  { left:160%; }
+  100% { left:160%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero .btn-secondary::after { animation:none; display:none; }
+}
 
 /* ---------- セクション共通（中央寄せの導入見出し・余白広め） ---------- */
 section { padding: 108px 0; }
@@ -107,7 +168,7 @@ section.alt { background: var(--bg-soft); }
 .metric .ba { display:flex; align-items:baseline; gap:10px; margin:16px 0 6px; flex-wrap:wrap; }
 .metric .before { color:#9aa4ad; text-decoration:line-through; font-size:.92rem; }
 .metric .arrow { color:var(--accent); font-weight:700; }
-.metric .after { font-size:2.1rem; font-weight:700; color:var(--ink); letter-spacing:-.02em; }
+.metric .after { font-size:2.1rem; font-weight:700; color:#d6453f; letter-spacing:-.02em; }
 .metric .desc { font-size:.86rem; color:var(--gray); margin-top:6px; line-height:1.8; }
 .metric .note { font-size:.74rem; color:#a7b0b8; margin-top:12px; }
 
@@ -163,6 +224,11 @@ section.alt { background: var(--bg-soft); }
 .profile .facts dt { font-size:.74rem; font-weight:700; color:var(--accent-d); letter-spacing:.02em; padding-top:20px; }
 .profile .facts dd { margin:5px 0 20px; font-size:.93rem; color:var(--ink); border-bottom:1px solid var(--line); padding-bottom:20px; }
 .profile .facts .row:last-child dd { border-bottom:none; }
+.profile .profile-head { display:flex; align-items:center; gap:18px; margin:0 0 22px; }
+.profile .profile-photo { width:96px; height:96px; border-radius:50%; object-fit:cover; flex:0 0 auto; box-shadow:0 6px 18px rgba(22,32,43,.14); }
+.profile .profile-name { display:flex; flex-direction:column; line-height:1.45; }
+.profile .profile-name strong { font-size:1.15rem; font-weight:700; letter-spacing:-.01em; }
+.profile .profile-name span { font-size:.82rem; color:var(--gray); }
 
 /* ---------- 締めCTAバンド ---------- */
 .cta-band { background:var(--accent-l); text-align:center; padding:96px 0; border-top:1px solid #d8e9ea; }

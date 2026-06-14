@@ -238,3 +238,10 @@ a{color:var(--accent-d); text-decoration:none;} a:hover{color:var(--accent);}
 .sheet-summary{margin-top:18px; padding:16px 20px; background:var(--accent-l); border-left:3px solid var(--accent);
   border-radius:var(--radius); font-size:.9rem; color:#33404c; line-height:1.75;}
 .sheet-summary b{color:var(--accent-d);}
+
+/* 「実際に入力できます」注意書き（赤） */
+.try-note{display:flex; align-items:center; gap:10px; margin:0 0 18px; padding:12px 16px;
+  background:#fff4f4; border:1px solid #f3c2c2; border-left:4px solid #d9534f; border-radius:var(--radius);
+  color:#c0392b; font-weight:700; font-size:.9rem; line-height:1.7;}
+.try-note .ico{font-size:1.15rem; flex:0 0 auto;}
+.try-note span.lead-em{ text-decoration:underline; text-underline-offset:3px;}

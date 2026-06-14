@@ -31,6 +31,12 @@
 
 <!-- ===================== ヒーロー ===================== -->
 <section class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <span class="blob b1"></span>
+    <span class="blob b2"></span>
+    <span class="blob b3"></span>
+    <span class="blob b4"></span>
+  </div>
   <div class="wrap">
     <h1>あなたの業務を、<br><span class="hl">「自動で回る形」</span>に整えます。</h1>
     <p class="lead">
@@ -125,10 +131,10 @@
       <a class="work-card" href="samples/media-ops/index.html">
         <div class="work-thumb"><img src="assets/img/portfolio/sample-media-ops-card.webp" alt="メディア運営の編集・分析ワークスペースイメージ" loading="lazy"></div>
         <div class="work-body">
-          <span class="tag">運営実例（成果物）</span>
-          <h3>1本の動画を企画から改善まで</h3>
-          <p><strong>企画書・サムネ案・管理シート</strong>を一気通貫で掲載。数値を入れるとCTRと改善判定が自動で出る運用シート付き。</p>
-          <span class="more">実例を見る<span class="ar">→</span></span>
+          <span class="tag">リサーチ業務（ケーススタディ）</span>
+          <h3>YouTube新規参入リサーチ</h3>
+          <p>市場・競合・視聴者を分析し<strong>勝てるポジション</strong>を導くまでを掲載。競合を入れると4象限で自動分類する<strong>分類ツール</strong>付き。</p>
+          <span class="more">ケースを見る<span class="ar">→</span></span>
         </div>
       </a>
     </div>
@@ -144,6 +150,10 @@
     </div>
     <div class="profile">
       <div>
+        <div class="profile-head">
+          <img class="profile-photo" src="assets/img/profile/profile.webp" alt="佐野佑一郎" width="96" height="96" loading="lazy">
+          <div class="profile-name"><strong>佐野佑一郎</strong><span>AI仕組み化パートナー</span></div>
+        </div>
         <p>佐野佑一郎と申します。現役で複数のメディア運営に携わりながら、その実務のなかでAIツールを業務に組み込んできました。</p>
         <p>もともとは「ターミナルの黒い画面が怖い」と感じていた、いわゆる非エンジニアです。だからこそ、同じように「AIを使いたいけど難しそう」と感じている方の目線で、専門用語を噛みくだきながら一緒に進められます。</p>
         <p>ツールを入れて終わりではなく、日々の業務で“回り続ける仕組み”にするところまで伴走するのが、私の関わり方です。</p>
@@ -175,6 +185,57 @@
     <p>© 2026 佐野佑一郎（AI仕組み化パートナー）</p>
   </div>
 </footer>
+
+<script>
+/* ヒーローの光：各ブロブがヒーロー全域をランダム回遊（速度はそれぞれ別） */
+(function(){
+  const hero = document.querySelector('.hero');
+  const blobs = [...document.querySelectorAll('.hero-bg .blob')];
+  if (!hero || !blobs.length) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    // 動きを止め、静的に程よく散らす
+    const spots = [[12,18],[82,22],[30,80],[70,70]];
+    blobs.forEach((b,i) => {
+      const hr = hero.getBoundingClientRect();
+      const x = hr.width  * spots[i%4][0]/100 - b.offsetWidth/2;
+      const y = hr.height * spots[i%4][1]/100 - b.offsetHeight/2;
+      b.style.transform = 'translate(' + x.toFixed(0) + 'px,' + y.toFixed(0) + 'px)';
+    });
+    return;
+  }
+  // ブロブごとの移動速度（px/秒）— すべて別の値
+  const speeds = [42, 70, 100, 135];
+  const st = blobs.map((el, i) => ({ el, speed: speeds[i % speeds.length], x: 0, y: 0, t: null }));
+
+  function step(s){
+    const hr = hero.getBoundingClientRect();
+    const w = s.el.offsetWidth, h = s.el.offsetHeight;
+    // 中心がヒーロー全域のどこへでも行けるようランダム選択
+    const nx = Math.random() * hr.width  - w / 2;
+    const ny = Math.random() * hr.height - h / 2;
+    const dist = Math.hypot(nx - s.x, ny - s.y);
+    const dur = Math.max(2.0, dist / s.speed);
+    const sc = (0.9 + Math.random() * 0.5).toFixed(2);
+    s.el.style.transition = 'transform ' + dur.toFixed(2) + 's ease-in-out';
+    s.el.style.transform = 'translate(' + nx.toFixed(0) + 'px,' + ny.toFixed(0) + 'px) scale(' + sc + ')';
+    s.x = nx; s.y = ny;
+    clearTimeout(s.t);
+    s.t = setTimeout(() => step(s), dur * 1000);
+  }
+
+  // 初期位置をランダムに即配置（遷移なし）
+  st.forEach(s => {
+    const hr = hero.getBoundingClientRect();
+    s.x = Math.random() * hr.width  - s.el.offsetWidth / 2;
+    s.y = Math.random() * hr.height - s.el.offsetHeight / 2;
+    s.el.style.willChange = 'transform';
+    s.el.style.transition = 'none';
+    s.el.style.transform = 'translate(' + s.x.toFixed(0) + 'px,' + s.y.toFixed(0) + 'px)';
+  });
+  void hero.offsetWidth; // リフローを確定させてから回遊開始
+  st.forEach(s => step(s));
+})();
+</script>
 
 </body>
 </html>
