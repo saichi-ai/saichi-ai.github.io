@@ -74,35 +74,8 @@
 <section id="jyutaku">
   <div class="container">
     <div class="service-detail reveal">
-      <!-- 左: SVGイラスト -->
-      <div class="service-detail-svg" style="background: linear-gradient(135deg,#e8f0eb 0%,#c8ddd0 100%);">
-        <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;" aria-label="注文住宅のイメージ">
-          <!-- 家の外観ラインアート -->
-          <path d="M200 40L330 130V270H260V200H140V270H70V130L200 40Z" stroke="#2d5a3d" stroke-width="2.5" stroke-linejoin="round" fill="rgba(255,255,255,0.6)"/>
-          <!-- 屋根の稜線 -->
-          <path d="M200 40L330 130" stroke="#a8784f" stroke-width="1.5" stroke-dasharray="5,3"/>
-          <path d="M200 40L70 130" stroke="#a8784f" stroke-width="1.5" stroke-dasharray="5,3"/>
-          <!-- 窓 -->
-          <rect x="90" y="150" width="40" height="40" rx="2" stroke="#2d5a3d" stroke-width="1.5" fill="rgba(200,230,215,.5)"/>
-          <line x1="110" y1="150" x2="110" y2="190" stroke="#2d5a3d" stroke-width="1"/>
-          <line x1="90" y1="170" x2="130" y2="170" stroke="#2d5a3d" stroke-width="1"/>
-          <rect x="270" y="150" width="40" height="40" rx="2" stroke="#2d5a3d" stroke-width="1.5" fill="rgba(200,230,215,.5)"/>
-          <line x1="290" y1="150" x2="290" y2="190" stroke="#2d5a3d" stroke-width="1"/>
-          <line x1="270" y1="170" x2="310" y2="170" stroke="#2d5a3d" stroke-width="1"/>
-          <!-- 玄関ドア -->
-          <rect x="172" y="200" width="56" height="70" rx="2" stroke="#a8784f" stroke-width="2" fill="rgba(168,120,79,.1)"/>
-          <circle cx="220" cy="236" r="4" fill="#a8784f"/>
-          <!-- 庭木 -->
-          <line x1="48" y1="270" x2="48" y2="230" stroke="#a8784f" stroke-width="2"/>
-          <ellipse cx="48" cy="222" rx="18" ry="22" fill="#4a7c5e" opacity=".55"/>
-          <line x1="352" y1="270" x2="352" y2="238" stroke="#a8784f" stroke-width="2"/>
-          <ellipse cx="352" cy="229" rx="16" ry="19" fill="#4a7c5e" opacity=".55"/>
-          <!-- 地面 -->
-          <line x1="30" y1="270" x2="370" y2="270" stroke="#2d5a3d" stroke-width="1.5"/>
-          <!-- ★フリーサイズ -->
-          <text x="200" y="295" text-anchor="middle" font-family="serif" font-size="10" fill="#2d5a3d" opacity=".5">注文住宅 / ORDER HOUSE</text>
-        </svg>
-      </div>
+      <!-- 左: 施工イメージ写真 -->
+      <div class="service-detail-svg"><img class="service-photo" src="../../assets/img/aoba-koumuten/work-house.webp" alt="注文住宅の外観イメージ" loading="lazy"></div>
 
       <!-- 右: テキスト -->
       <div class="service-detail-body">
@@ -141,43 +114,8 @@
         </ul>
       </div>
 
-      <!-- 右(reversedで左に来る): SVGイラスト -->
-      <div class="service-detail-svg" style="background: linear-gradient(135deg,#f5ece0 0%,#e8d5bc 100%);">
-        <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;" aria-label="リフォームのイメージ">
-          <!-- 平面図風のビフォーアフター -->
-          <!-- Before枠 -->
-          <rect x="30" y="40" width="155" height="220" rx="4" fill="rgba(255,255,255,.7)" stroke="#c8a87a" stroke-width="1.5"/>
-          <text x="107" y="60" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#a8784f">BEFORE</text>
-          <!-- 古い間取り（格子状の和室） -->
-          <rect x="40" y="68" width="65" height="80" fill="rgba(220,200,175,.4)" stroke="#c8a87a" stroke-width="1"/>
-          <rect x="110" y="68" width="65" height="80" fill="rgba(220,200,175,.4)" stroke="#c8a87a" stroke-width="1"/>
-          <rect x="40" y="152" width="135" height="98" fill="rgba(210,190,165,.4)" stroke="#c8a87a" stroke-width="1"/>
-          <!-- 格子模様（畳） -->
-          <line x1="40" y1="88" x2="105" y2="88" stroke="#c8a87a" stroke-width=".7"/>
-          <line x1="40" y1="108" x2="105" y2="108" stroke="#c8a87a" stroke-width=".7"/>
-          <line x1="72" y1="68" x2="72" y2="148" stroke="#c8a87a" stroke-width=".7"/>
-          <line x1="110" y1="88" x2="175" y2="88" stroke="#c8a87a" stroke-width=".7"/>
-          <line x1="110" y1="108" x2="175" y2="108" stroke="#c8a87a" stroke-width=".7"/>
-          <line x1="142" y1="68" x2="142" y2="148" stroke="#c8a87a" stroke-width=".7"/>
-          <text x="72" y="112" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#a8784f">和室</text>
-          <text x="142" y="112" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#a8784f">和室</text>
-          <text x="107" y="205" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#a8784f">食堂+台所</text>
-          <!-- 矢印 -->
-          <path d="M194 148 L210 148" stroke="#2d5a3d" stroke-width="2.5" stroke-linecap="round"/>
-          <path d="M206 143 L212 148 L206 153" stroke="#2d5a3d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-          <!-- After枠 -->
-          <rect x="218" y="40" width="155" height="220" rx="4" fill="rgba(255,255,255,.7)" stroke="#2d5a3d" stroke-width="1.5"/>
-          <text x="295" y="60" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#2d5a3d">AFTER</text>
-          <!-- 新しい間取り（開放的なLDK） -->
-          <rect x="228" y="68" width="135" height="130" fill="rgba(200,230,215,.4)" stroke="#2d5a3d" stroke-width="1"/>
-          <text x="295" y="136" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#2d5a3d">LDK</text>
-          <rect x="228" y="202" width="65" height="48" fill="rgba(200,230,215,.3)" stroke="#2d5a3d" stroke-width="1"/>
-          <rect x="298" y="202" width="65" height="48" fill="rgba(200,230,215,.3)" stroke="#2d5a3d" stroke-width="1"/>
-          <text x="260" y="230" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#2d5a3d">洋室</text>
-          <text x="330" y="230" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#2d5a3d">洋室</text>
-          <text x="200" y="292" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#a8784f" opacity=".6">リフォーム / REFORM</text>
-        </svg>
-      </div>
+      <!-- 右(reversedで左に来る): 施工イメージ写真 -->
+      <div class="service-detail-svg"><img class="service-photo" src="../../assets/img/aoba-koumuten/work-renovation.webp" alt="水回りリフォームのイメージ" loading="lazy"></div>
     </div>
   </div>
 </section>
@@ -186,36 +124,8 @@
 <section id="tenpo">
   <div class="container">
     <div class="service-detail reveal">
-      <!-- 左: SVGイラスト -->
-      <div class="service-detail-svg" style="background: linear-gradient(135deg,#e8eaf0 0%,#d4d8e8 100%);">
-        <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;" aria-label="店舗改装のイメージ">
-          <!-- 店舗ファサード -->
-          <rect x="50" y="50" width="300" height="220" fill="rgba(255,255,255,.8)" stroke="#3d4d7a" stroke-width="2"/>
-          <!-- 看板帯 -->
-          <rect x="50" y="50" width="300" height="45" fill="rgba(61,77,122,.12)"/>
-          <text x="200" y="78" text-anchor="middle" font-family="serif" font-size="15" font-weight="bold" fill="#3d4d7a">○○ STORE</text>
-          <!-- ショーウィンドウ左 -->
-          <rect x="65" y="108" width="90" height="100" rx="2" fill="rgba(200,210,240,.45)" stroke="#3d4d7a" stroke-width="1.5"/>
-          <line x1="110" y1="108" x2="110" y2="208" stroke="#3d4d7a" stroke-width="1"/>
-          <line x1="65" y1="158" x2="155" y2="158" stroke="#3d4d7a" stroke-width="1"/>
-          <!-- 商品陳列イメージ -->
-          <rect x="74" y="165" width="28" height="35" rx="1" fill="rgba(61,77,122,.15)" stroke="#3d4d7a" stroke-width=".8"/>
-          <rect x="108" y="165" width="28" height="35" rx="1" fill="rgba(61,77,122,.1)" stroke="#3d4d7a" stroke-width=".8"/>
-          <!-- ドア（中央） -->
-          <rect x="167" y="145" width="66" height="125" rx="2" fill="rgba(230,234,250,.6)" stroke="#3d4d7a" stroke-width="1.5"/>
-          <circle cx="226" cy="210" r="4" fill="#3d4d7a"/>
-          <!-- ショーウィンドウ右 -->
-          <rect x="245" y="108" width="90" height="100" rx="2" fill="rgba(200,210,240,.45)" stroke="#3d4d7a" stroke-width="1.5"/>
-          <line x1="290" y1="108" x2="290" y2="208" stroke="#3d4d7a" stroke-width="1"/>
-          <line x1="245" y1="158" x2="335" y2="158" stroke="#3d4d7a" stroke-width="1"/>
-          <rect x="254" y="165" width="28" height="35" rx="1" fill="rgba(61,77,122,.15)" stroke="#3d4d7a" stroke-width=".8"/>
-          <rect x="288" y="165" width="28" height="35" rx="1" fill="rgba(61,77,122,.1)" stroke="#3d4d7a" stroke-width=".8"/>
-          <!-- 地面 -->
-          <line x1="30" y1="270" x2="370" y2="270" stroke="#3d4d7a" stroke-width="1.5"/>
-          <rect x="50" y="265" width="300" height="5" fill="rgba(61,77,122,.08)"/>
-          <text x="200" y="292" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#3d4d7a" opacity=".6">店舗改装 / STORE RENOVATION</text>
-        </svg>
-      </div>
+      <!-- 左: 施工イメージ写真 -->
+      <div class="service-detail-svg"><img class="service-photo" src="../../assets/img/aoba-koumuten/work-cafe.webp" alt="店舗改装のイメージ" loading="lazy"></div>
 
       <!-- 右: テキスト -->
       <div class="service-detail-body">
